@@ -12,7 +12,6 @@ export default function Home() {
 
   return (
     <div className="home-page">
-      {/* Hero Section */}
       <section className="hero-section">
         <div className="container">
           <div className="hero-grid">
@@ -71,7 +70,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Showcase Section */}
       <section className="section">
         <div className="container">
           <div className="section-header-center">
@@ -105,7 +103,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Brand Compatibility Interactive Section */}
       <section className="section" style={{ backgroundColor: 'rgba(15, 23, 42, 0.5)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="container">
           <div className="section-header-center">
@@ -114,7 +111,6 @@ export default function Home() {
             <p className="section-subtitle">Click on your bike manufacturer to quickly find compatible spare parts.</p>
           </div>
 
-          {/* Brand Selector Pills */}
           <div className="brand-strip">
             {BRANDS.map((brand) => (
               <button
@@ -128,7 +124,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Compatible Models Box */}
           <div className="brand-models-box">
             <h3 className="brand-models-title">
               Top Compatible Models for {selectedBrand.name}:
@@ -153,7 +148,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Products Grid */}
       <section className="section">
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1rem' }}>
@@ -174,7 +168,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose ROADEEZ / Value Proposition */}
       <section className="section" style={{ backgroundColor: '#090d16', borderTop: '1px solid var(--color-border)' }}>
         <div className="container">
           <div className="section-header-center">
@@ -211,7 +204,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Customer Reviews Section */}
       <section className="section">
         <div className="container">
           <div className="section-header-center">
@@ -240,7 +232,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call To Action Banner */}
       <section className="section" style={{ background: 'linear-gradient(135deg, #ef4444 0%, #991b1b 100%)', color: '#fff', textAlign: 'center' }}>
         <div className="container">
           <h2 style={{ fontSize: '2.5rem', fontWeight: 900, marginBottom: '1rem' }}>

@@ -1,5 +1,3 @@
-// Mock Database for ROADEEZ Two-Wheeler Parts & Accessories
-
 export const CATEGORIES = [
   { id: 'headlight', name: 'Headlight', description: 'Ultra-bright LED & OEM halogen headlight assemblies', icon: 'zap' },
   { id: 'indicator', name: 'Indicator', description: 'Flowing LED turn signals & clear lens indicator sets', icon: 'eye' },
@@ -17,7 +15,6 @@ export const BRANDS = [
 ];
 
 export const PRODUCTS = [
-  // HEADLIGHTS
   {
     id: 'prod-hl-01',
     name: 'ROADEEZ HyperBeam Pro LED Headlight Assembly',
@@ -168,7 +165,7 @@ export const PRODUCTS = [
     isFeatured: true,
     isBestseller: true,
     badge: 'Premium',
-    image: 'https://images.unsplash.com/photo-1547549662-7741206132e6?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80',
     shortDescription: 'Racing edition LED projector light system with high-speed cooling fan for Yamaha FZ and R15 series.',
     description: 'Designed for track-level illumination. The R-Series projector housing provides crystal clear high-beam spread with zero dark spots.',
     specs: {
@@ -184,8 +181,6 @@ export const PRODUCTS = [
       'Impact resistant housing withstands rough roads'
     ]
   },
-
-  // INDICATORS
   {
     id: 'prod-ind-01',
     name: 'ROADEEZ Flowing Matrix LED Indicator Set (Set of 4)',
@@ -326,7 +321,7 @@ export const PRODUCTS = [
     isFeatured: true,
     isBestseller: true,
     badge: 'Track Spec',
-    image: 'https://images.unsplash.com/photo-1547549662-7741206132e6?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80',
     shortDescription: 'Winglet blade style LED indicators inspired by superbike winglets for Yamaha R15 and MT15.',
     description: 'Slim profile blade indicators designed to reduce drag while giving superior visual signals to other road users.',
     specs: {
@@ -341,8 +336,6 @@ export const PRODUCTS = [
       'Dual color option with blue daytime accent'
     ]
   },
-
-  // MUD GUARD
   {
     id: 'prod-mg-01',
     name: 'ROADEEZ Heavy-Duty Front Mudguard',
@@ -483,7 +476,7 @@ export const PRODUCTS = [
     isFeatured: false,
     isBestseller: false,
     badge: 'Aero Spec',
-    image: 'https://images.unsplash.com/photo-1547549662-7741206132e6?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1558980664-769d59546b3d?auto=format&fit=crop&w=800&q=80',
     shortDescription: 'Aggressively styled front aerodynamic mudguard for Yamaha sport bikes.',
     description: 'Aero dynamic vents redirect airflow towards the radiator while preventing gravel chips from scratching lower fork stanchions.',
     specs: {
@@ -499,8 +492,6 @@ export const PRODUCTS = [
       'Exact factory mount hole alignment'
     ]
   },
-
-  // SIDE PANEL
   {
     id: 'prod-sp-01',
     name: 'ROADEEZ Side Panel Cover Pair (Left + Right)',
@@ -637,7 +628,7 @@ export const PRODUCTS = [
     isFeatured: true,
     isBestseller: true,
     badge: 'Superbike Look',
-    image: 'https://images.unsplash.com/photo-1547549662-7741206132e6?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80',
     shortDescription: 'Aerodynamic side winglet cowl panel kit for Yamaha R15 V4 and FZ series.',
     description: 'Inject MotoGP aesthetic into your Yamaha with side winglet cowls that clip seamlessly onto fairing panels.',
     specs: {
@@ -652,8 +643,6 @@ export const PRODUCTS = [
       'Non-destructive clip-on installation'
     ]
   },
-
-  // TAIL GUARD
   {
     id: 'prod-tg-01',
     name: 'ROADEEZ Crystal Clear LED Tail Light Assembly',
@@ -791,7 +780,7 @@ export const PRODUCTS = [
     isFeatured: true,
     isBestseller: true,
     badge: 'R-Spec',
-    image: 'https://images.unsplash.com/photo-1547549662-7741206132e6?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80',
     shortDescription: 'Track edition LED tail light unit with heavy-duty metal license plate guard for Yamaha.',
     description: 'High visibility tail section assembly built specifically for Yamaha performance riders.',
     specs: {

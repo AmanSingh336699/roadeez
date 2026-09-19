@@ -5,7 +5,6 @@ import './About.css';
 export default function About() {
   return (
     <div className="about-page">
-      {/* About Hero */}
       <section className="about-hero">
         <div className="container">
           <div className="about-grid">
@@ -35,7 +34,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Core Values & Pillars */}
       <section className="section">
         <div className="container">
           <div className="section-header-center">
@@ -66,7 +64,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Brand Numbers Section */}
       <section className="section" style={{ backgroundColor: '#070a12', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <span className="badge badge-success" style={{ marginBottom: '1rem' }}>Impact & Reach</span>

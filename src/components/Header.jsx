@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { CATEGORIES, BRANDS } from '../data/mockData';
+import roadeezLogo from '../assets/roadeez.png';
 import './Header.css';
 
 export default function Header() {
@@ -11,7 +12,6 @@ export default function Header() {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  // Close mega menu when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -21,6 +21,17 @@ export default function Header() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   const handleBrandClick = (categoryId, brandId) => {
     setIsMegaOpen(false);
@@ -37,25 +48,15 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        {/* Brand Logo */}
         <Link to="/" className="brand-logo" onClick={() => setMobileMenuOpen(false)}>
-          <div className="logo-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-          </div>
-          <div className="brand-text">
-            ROAD<span>EEZ</span>
-          </div>
+          <img src={roadeezLogo} alt="ROADEEZ Logo" className="brand-logo-img" />
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="desktop-nav">
           <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
             Home
           </NavLink>
 
-          {/* Products Mega Dropdown (Inspired by Reference UI) */}
           <div 
             className="products-menu-wrapper"
             ref={dropdownRef}
@@ -65,9 +66,6 @@ export default function Header() {
             <NavLink 
               to="/products" 
               className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-              onClick={(e) => {
-                // If clicked directly, toggle menu or let navigation proceed
-              }}
             >
               Products
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -77,7 +75,6 @@ export default function Header() {
 
             {isMegaOpen && (
               <div className="mega-menu">
-                {/* Left Column: Categories List */}
                 <div className="mega-categories">
                   {CATEGORIES.map((cat) => (
                     <div
@@ -92,7 +89,6 @@ export default function Header() {
                   ))}
                 </div>
 
-                {/* Right Column: Compatible Brands for Hovered Category */}
                 <div className="mega-brands">
                   <div className="mega-brands-header">
                     Compatible Brands for {activeCategory.name}
@@ -128,7 +124,6 @@ export default function Header() {
           </NavLink>
         </nav>
 
-        {/* Header Actions */}
         <div className="header-actions">
           <Link to="/products" className="icon-btn" title="Search Products">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -158,44 +153,53 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="mobile-drawer-overlay" onClick={() => setMobileMenuOpen(false)}>
           <div className="mobile-drawer" onClick={(e) => e.stopPropagation()}>
             <div className="mobile-drawer-header">
-              <div className="brand-logo">
-                <div className="logo-badge">⚡</div>
-                <div className="brand-text">ROAD<span>EEZ</span></div>
-              </div>
-              <button className="icon-btn" onClick={() => setMobileMenuOpen(false)}>
-                ✕
+              <Link to="/" className="brand-logo" onClick={() => setMobileMenuOpen(false)}>
+                <img src={roadeezLogo} alt="ROADEEZ Logo" className="brand-logo-img" />
+              </Link>
+              <button 
+                className="icon-btn" 
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
               </button>
             </div>
 
-            <div className="mobile-nav-list">
-              <NavLink to="/" className="nav-link" onClick={() => setMobileMenuOpen(false)}>
+            <div className="mobile-nav-body">
+              <NavLink 
+                to="/" 
+                className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Home
               </NavLink>
 
-              {/* Accordion for Products */}
               <div>
                 <div 
                   className="mobile-accordion-title"
                   onClick={() => setMobileCategoriesOpen(!mobileCategoriesOpen)}
                 >
-                  <span>Products</span>
+                  <span>Products & Categories</span>
                   <span>{mobileCategoriesOpen ? '▲' : '▼'}</span>
                 </div>
 
                 {mobileCategoriesOpen && (
                   <div className="mobile-category-list">
                     {CATEGORIES.map((cat) => (
-                      <div key={cat.id}>
+                      <div key={cat.id} style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.04)', paddingBottom: '0.5rem' }}>
                         <div 
-                          style={{ fontWeight: 600, color: 'var(--color-primary)', fontSize: '0.9rem', cursor: 'pointer' }}
+                          className="mobile-category-item-title"
                           onClick={() => handleCategoryClick(cat.id)}
                         >
-                          {cat.name}
+                          <span>{cat.name}</span>
+                          <span>→</span>
                         </div>
                         <div className="mobile-brand-tags">
                           {BRANDS.map((b) => (
@@ -214,11 +218,19 @@ export default function Header() {
                 )}
               </div>
 
-              <NavLink to="/about" className="nav-link" onClick={() => setMobileMenuOpen(false)}>
+              <NavLink 
+                to="/about" 
+                className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 About Us
               </NavLink>
 
-              <NavLink to="/contact" className="nav-link" onClick={() => setMobileMenuOpen(false)}>
+              <NavLink 
+                to="/contact" 
+                className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Contact Us
               </NavLink>
             </div>

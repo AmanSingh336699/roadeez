@@ -12,7 +12,6 @@ export default function Products() {
   const searchQuery = searchParams.get('q') || '';
   const sortBy = searchParams.get('sort') || 'featured';
 
-  // Helper to update query params cleanly
   const updateFilter = (key, value) => {
     const newParams = new URLSearchParams(searchParams);
     if (value && value !== 'all') {
@@ -27,18 +26,14 @@ export default function Products() {
     setSearchParams(new URLSearchParams());
   };
 
-  // Filter & Sort Logic
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((item) => {
-      // Category match
       if (selectedCategory !== 'all' && item.category !== selectedCategory) {
         return false;
       }
-      // Brand match
       if (selectedBrand !== 'all' && item.brand !== selectedBrand) {
         return false;
       }
-      // Search text match
       if (searchQuery.trim() !== '') {
         const query = searchQuery.toLowerCase();
         const matchesName = item.name.toLowerCase().includes(query);
@@ -53,14 +48,13 @@ export default function Products() {
       if (sortBy === 'price-low') return a.price - b.price;
       if (sortBy === 'price-high') return b.price - a.price;
       if (sortBy === 'rating') return b.rating - a.rating;
-      return 0; // default featured order
+      return 0;
     });
   }, [selectedCategory, selectedBrand, searchQuery, sortBy]);
 
   return (
     <div className="products-page">
       <div className="container">
-        {/* Page Title Header */}
         <div className="products-page-header">
           <span className="badge badge-primary">Catalog</span>
           <h1 className="section-title">Two-Wheeler Accessories Catalog</h1>
@@ -70,7 +64,6 @@ export default function Products() {
         </div>
 
         <div className="products-layout">
-          {/* Left Sidebar Filters */}
           <aside className="filters-sidebar">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', paddingBottom: '0.75rem', borderBottom: '1px solid var(--color-border)' }}>
               <h3 style={{ fontSize: '1.1rem', fontWeight: 800 }}>Filter Parts</h3>
@@ -84,7 +77,6 @@ export default function Products() {
               )}
             </div>
 
-            {/* Category Filter */}
             <div className="filter-group">
               <div className="filter-title">Category</div>
               <div className="filter-options">
@@ -111,7 +103,6 @@ export default function Products() {
               </div>
             </div>
 
-            {/* Brand Filter */}
             <div className="filter-group">
               <div className="filter-title">Bike Brand</div>
               <div className="filter-options">
@@ -139,9 +130,7 @@ export default function Products() {
             </div>
           </aside>
 
-          {/* Right Main Catalog Content */}
           <main className="catalog-main">
-            {/* Search and Sort Control Bar */}
             <div className="catalog-controls">
               <div className="search-box">
                 <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -173,7 +162,6 @@ export default function Products() {
               </div>
             </div>
 
-            {/* Active Filters Display */}
             {(selectedCategory !== 'all' || selectedBrand !== 'all' || searchQuery !== '') && (
               <div className="active-filters-bar">
                 <span style={{ fontSize: '0.85rem', color: 'var(--color-text-subtle)' }}>Active Filters:</span>
@@ -198,12 +186,10 @@ export default function Products() {
               </div>
             )}
 
-            {/* Products Counter */}
             <div style={{ marginBottom: '1.25rem', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
               Showing <strong>{filteredProducts.length}</strong> matching products
             </div>
 
-            {/* Products Grid or Empty State */}
             {filteredProducts.length > 0 ? (
               <div className="grid-3">
                 {filteredProducts.map((product) => (

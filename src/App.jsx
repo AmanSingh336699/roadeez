@@ -8,7 +8,6 @@ import ProductDetail from './pages/ProductDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
 
-// Scroll to top automatically on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {

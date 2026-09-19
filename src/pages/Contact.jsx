@@ -51,7 +51,6 @@ export default function Contact() {
   return (
     <div className="contact-page">
       <div className="container">
-        {/* Section Header */}
         <div className="products-page-header">
           <span className="badge badge-primary">Support & Inquiries</span>
           <h1 className="section-title">Contact ROADEEZ Team</h1>
@@ -61,7 +60,6 @@ export default function Contact() {
         </div>
 
         <div className="contact-grid">
-          {/* Left Column: Contact Cards */}
           <div className="info-cards">
             <div className="info-card">
               <div className="info-icon">📞</div>
@@ -104,7 +102,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right Column: Contact Form */}
           <div className="contact-form-box">
             <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '0.5rem' }}>Send Us a Message</h3>
             <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
@@ -202,7 +199,6 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* FAQ Accordion Section */}
         <section className="faq-section">
           <div className="section-header-center">
             <span className="badge badge-amber">Help Center</span>

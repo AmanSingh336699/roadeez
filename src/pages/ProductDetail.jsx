@@ -30,7 +30,6 @@ export default function ProductDetail() {
   const categoryObj = CATEGORIES.find(c => c.id === product.category);
   const activeImage = selectedImg || product.image;
 
-  // Related products from same category or brand
   const relatedProducts = PRODUCTS.filter(
     (p) => p.id !== product.id && (p.category === product.category || p.brand === product.brand)
   ).slice(0, 3);
@@ -43,7 +42,6 @@ export default function ProductDetail() {
   return (
     <div className="product-detail-page">
       <div className="container">
-        {/* Breadcrumb Navigation */}
         <div className="breadcrumbs">
           <Link to="/">Home</Link>
           <span>/</span>
@@ -54,12 +52,18 @@ export default function ProductDetail() {
           <span style={{ color: 'var(--color-text-main)', fontWeight: 600 }}>{product.name}</span>
         </div>
 
-        {/* Main Grid */}
         <div className="detail-grid">
-          {/* Left Column: Image Showcase */}
           <div className="gallery-col">
             <div className="gallery-main-wrap">
-              <img src={activeImage} alt={product.name} className="gallery-main-img" />
+              <img 
+                src={activeImage} 
+                alt={product.name} 
+                className="gallery-main-img" 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80';
+                }}
+              />
               {product.badge && (
                 <span className="badge badge-primary product-badge">
                   {product.badge}
@@ -74,7 +78,6 @@ export default function ProductDetail() {
               >
                 <img src={product.image} alt="Thumbnail 1" />
               </div>
-              {/* Add secondary mock angles for visual fidelity */}
               <div 
                 className={`thumb-item ${activeImage === 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=400&q=80' ? 'active' : ''}`}
                 onClick={() => setSelectedImg('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=400&q=80')}
@@ -90,7 +93,6 @@ export default function ProductDetail() {
             </div>
           </div>
 
-          {/* Right Column: Product Info & Actions */}
           <div className="detail-info">
             <div className="detail-fitment-tag">
               ⚡ Guaranteed OEM Fitment for {product.compatibleModel} ({product.brand.toUpperCase()})
@@ -122,7 +124,6 @@ export default function ProductDetail() {
 
             <p className="detail-description">{product.description}</p>
 
-            {/* Specifications Table */}
             <div className="specs-section">
               <h3 className="specs-title">Technical Specifications</h3>
               <table className="specs-table">
@@ -137,7 +138,6 @@ export default function ProductDetail() {
               </table>
             </div>
 
-            {/* Key Features List */}
             {product.features && product.features.length > 0 && (
               <div style={{ marginBottom: '1.75rem' }}>
                 <h3 className="specs-title">Key Highlights</h3>
@@ -151,7 +151,6 @@ export default function ProductDetail() {
               </div>
             )}
 
-            {/* Action Bar */}
             <div className="detail-actions-row">
               <div className="qty-picker">
                 <button className="qty-btn" onClick={() => setQty(Math.max(1, qty - 1))}>-</button>
@@ -179,7 +178,6 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* Related Products Grid */}
         {relatedProducts.length > 0 && (
           <div style={{ paddingTop: '3rem', borderTop: '1px solid var(--color-border)' }}>
             <div style={{ marginBottom: '2rem' }}>

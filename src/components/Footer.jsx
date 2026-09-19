@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CATEGORIES, BRANDS } from '../data/mockData';
+import roadeezLogo from '../assets/roadeez.png';
 import './Footer.css';
 
 export default function Footer() {
@@ -8,24 +9,15 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container">
         <div className="footer-grid">
-          {/* Brand Info */}
           <div className="footer-brand">
             <Link to="/" className="brand-logo">
-              <div className="logo-badge">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                </svg>
-              </div>
-              <div className="brand-text">
-                ROAD<span>EEZ</span>
-              </div>
+              <img src={roadeezLogo} alt="ROADEEZ Logo" className="brand-logo-img" />
             </Link>
             <p>
               India's trusted destination for precision-engineered two-wheeler accessories, heavy-duty lighting, and OEM compatible spare parts.
             </p>
           </div>
 
-          {/* Categories Links */}
           <div className="footer-col">
             <h4>Categories</h4>
             <ul className="footer-links">
@@ -37,7 +29,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Bike Brands */}
           <div className="footer-col">
             <h4>Supported Brands</h4>
             <ul className="footer-links">
@@ -49,7 +40,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Quick Contact & Newsletter */}
           <div className="footer-col">
             <h4>Rider Newsletter</h4>
             <p style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)' }}>
@@ -69,7 +59,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="footer-bottom">
           <div>
             © {new Date().getFullYear()} ROADEEZ Auto Accessories Ltd. All rights reserved.
